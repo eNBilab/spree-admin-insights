@@ -24,7 +24,9 @@
               <%= Spree.t(:filter) %>
             </button>
           </span>
-          <%= form_tag form_action(@report_name, params[:report_category]), id: "quick-search" do %>
+
+          <%= form_tag @report_name ? admin_insight_path(id: @report_name, type: params[:report_category]) : 'javascript:void(0)',
+                       id: "quick-search" do %>
             <%= text_field_tag :quick_search, nil, class: "form-control js-quick-search", placeholder: Spree.t(:quick_search) %>
           <% end %>
         </div>
@@ -36,6 +38,7 @@
     <div class="table-active-filters js-filters"></div>
   </div>
 
+  <h1>Grafici</h1>
   <%= render 'chart' %>
 
   <div id="table-helpers" class="row float-right d-none">
@@ -60,21 +63,22 @@
           <li><%= link_to 'Text', admin_insights_download_path(format: 'text'), class: 'download-link',  data: { url: admin_insights_download_path(format: 'text') }%></li>
         </ul>
       </span>
+    </span>
     <span id="page-selector">
-        <span class="select-box-slide float-right">
-          <%= select_tag :per_page, options_for_select(page_selector_options, params[:per_page] || Spree::Config[:records_per_page]), class: 'form-control text-right float-right page-select' %>
-        </span>
-        <span title="apply pagination" class="col-md-2 d-none float-right">
-          <%= link_to '#', class: 'btn border', id: 'apply-pagination' do %>
-            <span class="glyphicon glyphicon-eye-open"></span>
-          <% end %>
-        </span>
-        <span title="remove pagination" class="col-md-2 float-right">
-          <%= link_to '#', class: 'btn border', id: 'remove-pagination' do %>
-            <span class="glyphicon glyphicon-eye-close"></span>
-          <% end %>
-        </span>
+      <span class="select-box-slide float-right">
+        <%#= select_tag :per_page, options_for_select(page_selector_options, params[:per_page] || Spree::Config[:records_per_page]), class: 'form-control text-right float-right page-select' %>
       </span>
+      <span title="apply pagination" class="col-md-2 d-none float-right">
+        <%= link_to '#', class: 'btn border', id: 'apply-pagination' do %>
+          <span class="glyphicon glyphicon-eye-open"></span>
+        <% end %>
+      </span>
+      <span title="remove pagination" class="col-md-2 float-right">
+        <%= link_to '#', class: 'btn border', id: 'remove-pagination' do %>
+          <span class="glyphicon glyphicon-eye-close"></span>
+        <% end %>
+      </span>
+    </span>
   </div>
 </div>
 
@@ -86,5 +90,6 @@
 </div>
 
 <%= render partial: 'spree/admin/templates/insights/show', formats: [:template] %>
+
 <%= render partial: 'spree/admin/templates/insights/paginator', formats: [:template] %>
 <%= render partial: 'spree/admin/templates/insights/search', formats: [:template] %>

@@ -16,6 +16,11 @@ module Spree
         report = ReportGenerationService.generate_report(@report_name, params.merge(@pagination_hash))
 
         @report_data = shared_data.merge(report.to_h)
+
+        Rails.logger.error "*"*100
+        Rails.logger.error @report_data
+        Rails.logger.error "*"*100
+
         respond_to do |format|
           format.html { render :index }
           format.json { render json: @report_data }
@@ -103,7 +108,7 @@ module Spree
           @pagination_hash = { paginate: false }
           unless params[:paginate] == 'false'
             @pagination_hash[:paginate] = true
-            @pagination_hash[:records_per_page] = params[:per_page].try(:to_i) || Spree::Config[:records_per_page]
+            @pagination_hash[:records_per_page] = params[:per_page].try(:to_i) || 25
             @pagination_hash[:offset] = params[:page].to_i * @pagination_hash[:records_per_page]
           end
         end
