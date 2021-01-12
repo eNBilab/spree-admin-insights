@@ -17,10 +17,6 @@ module Spree
 
         @report_data = shared_data.merge(report.to_h)
 
-        Rails.logger.error "*"*100
-        Rails.logger.error @report_data
-        Rails.logger.error "*"*100
-
         respond_to do |format|
           format.html { render :index }
           format.json { render json: @report_data }

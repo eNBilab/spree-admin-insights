@@ -1,4 +1,7 @@
 <% content_for :page_title do %>
+  <%= link_to 'javascript:;', class: 'btn btn-link float-right', data: {toggle: 'modal', target: '#insightsHelp'} do %>
+    Help
+  <% end %>
   <%= Spree.t(:heading, type: params[:report_category].to_s.titleize, scope: :insight) %>
 <% end %>
 
@@ -38,7 +41,6 @@
     <div class="table-active-filters js-filters"></div>
   </div>
 
-  <h1>Grafici</h1>
   <%= render 'chart' %>
 
   <div id="table-helpers" class="row float-right d-none">
@@ -93,3 +95,19 @@
 
 <%= render partial: 'spree/admin/templates/insights/paginator', formats: [:template] %>
 <%= render partial: 'spree/admin/templates/insights/search', formats: [:template] %>
+
+<div class="modal fade" id="insightsHelp" tabindex="1" role="dialog" aria-labelledby="insightsHelp" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-xl" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalScrollableTitle">Insights help</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <%= render 'spree/admin/insights/help' %>
+      </div>
+    </div>
+  </div>
+</div>
