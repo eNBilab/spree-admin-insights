@@ -41,7 +41,7 @@ module Spree
 
     def initialize(options)
       self.search = options.fetch(:search, {})
-      self.records_per_page = options[:records_per_page]
+      self.records_per_page = 25#options[:records_per_page]
       self.current_page = options[:offset]
       self.paginate = options[:paginate]
       extract_reporting_period
