@@ -20,9 +20,9 @@ class Spree::SalesTaxReport::MonthlySalesTaxComparisonChart
         },
         xAxis: { categories: @time_series },
         yAxis: {
-          title: { text: 'Value($)' }
+          title: { text: 'Value(€)' }
         },
-        tooltip: { valuePrefix: '$' },
+        tooltip: { valuePrefix: '€' },
         legend: {
           layout: 'vertical',
           align: 'right',

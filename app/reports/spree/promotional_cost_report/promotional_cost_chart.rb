@@ -20,9 +20,9 @@ class Spree::PromotionalCostReport::PromotionalCostChart
         },
         xAxis: { categories: time },
         yAxis: {
-          title: { text: 'Value($)' }
+          title: { text: 'Value(€)' }
         },
-        tooltip: { valuePrefix: '$' },
+        tooltip: { valuePrefix: '€' },
         legend: {
           layout: 'vertical',
           align: 'right',

@@ -19,9 +19,9 @@ class Spree::PaymentMethodTransactionsReport::PaymentMethodRevenueDistributionCh
         },
         xAxis: { categories: @time_series },
         yAxis: {
-          title: { text: 'value($)' }
+          title: { text: 'value(€)' }
         },
-        tooltip: { valuePrefix: '$' },
+        tooltip: { valuePrefix: '€' },
         legend: {
           layout: 'vertical',
           align: 'right',
