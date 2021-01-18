@@ -49,7 +49,7 @@ module Spree
     private def payments
       Spree::PaymentMethod
         .joins(:payments)
-        .where(spree_payments: { created_at: reporting_period })
+        .where(spree_payments: { state: 'completed', created_at: reporting_period })
         .select(
           *time_scale_selects('spree_payments'),
           'spree_payment_methods.name  as payment_method_name',
